@@ -1,0 +1,40 @@
+# version format ex. "0.0.1"
+version: "0.0.2"
+
+# Basic metadata for the agent
+metadata:
+  name: "ai-sleeping-coach-generator"
+  description: "This flow provides customized sleeping advice and tips to improve sleep quality."
+  author: "tejasri" # This username should match your account username
+  tags: [sleep, health, wellness, coaching, AI]
+  private: false # Access control for your flows (true/false)
+
+# Define the input variables required
+inputs:
+  sleep_issues:
+    type: string # Currently we only support String format
+    description: "Describe your sleep issues or concerns."
+    required: true
+    example: "Difficulty falling asleep, frequent waking, etc."
+  preferred_tone:
+    type: string
+    description: "Choose the tone of advice: scientific, motivational, or empathetic."
+    required: true
+    example: "Motivational, Empathetic, Scientific, etc."
+
+# LLM configuration
+model:
+  provider: "anthropic" # e.g., anthropic, openai, meta, etc.
+  name: "claude-3.5-insightful"
+
+# For supported LLM models, refer to the documentation: https://docs.mira.network/sdk/core-concepts
+
+# Prompt template configuration
+prompt: |
+  Provide personalized advice for improving sleep quality. Address the following issue: {sleep_issues}, and present it in a {preferred_tone} tone.
+
+# ReadME configuration
+readme: |
+  This flow provides customized sleeping advice to help users improve their sleep quality. Simply input your sleep issues and the preferred tone of advice, and the flow generates tailored recommendations. The model used is Claude-3.5-insightful:free.
+
+  Example: Input1: Difficulty falling asleep, Input2: Motivational
